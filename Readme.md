@@ -1,7 +1,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Default.aspx](./CS/ASPxSpreadsheetBinding/Default.aspx) (VB: [Default.aspx.vb](./VB/ASPxSpreadsheetBinding/Default.aspx.vb))
+* [Default.aspx](./CS/ASPxSpreadsheetBinding/Default.aspx) (VB: [Default.aspx](./VB/ASPxSpreadsheetBinding/Default.aspx))
 * **[Default.aspx.cs](./CS/ASPxSpreadsheetBinding/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxSpreadsheetBinding/Default.aspx.vb))**
 <!-- default file list end -->
 # ASPxSpreadsheet - How to save and load documents from a database
