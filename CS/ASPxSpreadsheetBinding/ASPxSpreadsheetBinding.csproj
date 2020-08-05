@@ -135,9 +135,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="App_Data\UploadTemp\" />
     <Folder Include="App_Data\WorkDirectory\" />
   </ItemGroup>
