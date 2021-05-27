@@ -7,23 +7,23 @@ using DevExpress.Web.Office;
 
 namespace ASPxSpreadsheetBinding {
     public partial class Default : System.Web.UI.Page {
-        string SessionKey = "EditedDocuemntID";
-        protected string EditedDocuemntID {
+        string SessionKey = "EditedDocumentID";
+        protected string EditedDocumentID {
             get { return (string)Session[SessionKey] ?? string.Empty; }
             set { Session[SessionKey] = value; }
         }
         protected void Page_Init(object sender, EventArgs e) {
             if(!IsPostBack && !IsCallback) {
-                if(!string.IsNullOrEmpty(EditedDocuemntID)) {
-                    DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocuemntID).DocumentId);
-                    EditedDocuemntID = string.Empty;
+                if(!string.IsNullOrEmpty(EditedDocumentID)) {
+                    DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocumentID).DocumentId);
+                    EditedDocumentID = string.Empty;
                 }
 
-                EditedDocuemntID = Guid.NewGuid().ToString();
+                EditedDocumentID = Guid.NewGuid().ToString();
 
                 DataView view = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
                 Spreadsheet.Open(
-                    EditedDocuemntID,
+                    EditedDocumentID,
                     DocumentFormat.Xlsx,
                     () => { return (byte[])view.Table.Rows[0]["DocBytes"]; }
                 );
