@@ -9,8 +9,8 @@ Namespace ASPxSpreadsheetBinding
 	Partial Public Class [Default]
 		Inherits System.Web.UI.Page
 
-		Private SessionKey As String = "EditedDocuemntID"
-		Protected Property EditedDocuemntID() As String
+		Private SessionKey As String = "EditedDocumentID"
+		Protected Property EditedDocumentID() As String
 			Get
 				Return If(DirectCast(Session(SessionKey), String), String.Empty)
 			End Get
@@ -20,15 +20,15 @@ Namespace ASPxSpreadsheetBinding
 		End Property
 		Protected Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs)
 			If Not IsPostBack AndAlso Not IsCallback Then
-				If Not String.IsNullOrEmpty(EditedDocuemntID) Then
-					DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocuemntID).DocumentId)
-					EditedDocuemntID = String.Empty
+				If Not String.IsNullOrEmpty(EditedDocumentID) Then
+					DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocumentID).DocumentId)
+					EditedDocumentID = String.Empty
 				End If
 
-				EditedDocuemntID = Guid.NewGuid().ToString()
+				EditedDocumentID = Guid.NewGuid().ToString()
 
 				Dim view As DataView = DirectCast(SqlDataSource1.Select(DataSourceSelectArguments.Empty), DataView)
-				Spreadsheet.Open(EditedDocuemntID, DocumentFormat.Xlsx, Function()
+				Spreadsheet.Open(EditedDocumentID, DocumentFormat.Xlsx, Function()
 					Return CType(view.Table.Rows(0)("DocBytes"), Byte())
 				End Function)
 			End If

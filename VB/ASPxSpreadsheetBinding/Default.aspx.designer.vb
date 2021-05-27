@@ -19,7 +19,7 @@ Namespace ASPxSpreadsheetBinding
 		''' Auto-generated field.
 		''' To modify move field declaration from designer file to code-behind file.
 		''' </remarks>
-		Protected form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+		Protected form1 As System.Web.UI.HtmlControls.HtmlForm
 
 		''' <summary>
 		''' Spreadsheet control.
@@ -46,6 +46,6 @@ Namespace ASPxSpreadsheetBinding
 		''' Auto-generated field.
 		''' To modify move field declaration from designer file to code-behind file.
 		''' </remarks>
-		Protected SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
+		Protected SqlDataSource1 As System.Web.UI.WebControls.SqlDataSource
 	End Class
 End Namespace
