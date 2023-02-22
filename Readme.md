@@ -3,19 +3,30 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T190812)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
+# Spreadsheet for ASP.NET Web Forms - How to save/load documents from/to a database
 
+This example demonstrates how to configure the [Spreadsheet control](https://docs.devexpress.com/AspNet/16157/components/spreadsheet) to work with a database. 
+
+![Connect Spreadsheet to Database](save-to-database.gif)
+
+## Overview
+
+During page initialization, load a document from a database as a byte array and pass it to the control's [Open](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxSpreadsheet.ASPxSpreadsheet.Open(System.String-DevExpress.Spreadsheet.DocumentFormat-System.Func-System.Byte---)) method to open the document in the Spreadsheet.
+
+The [Saving](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxSpreadsheet.ASPxSpreadsheet.Saving) event occurs when a user clicks the built-in **Save** or **SaveAs** command on the Spreadsheet's ribbon. To save pending changes, handle the `Saving` event and update the data source. To save the document after a user clicks an external button, update the database in the button's [Click](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxButton.Click?p=netframework) event handler.
+
+> Note  
+> When a user modifies a cell, the Spreadsheet control applies the entered value only after the user moves focus to another cell. A cell value cannot be saved until the control applies it. Call the [ApplyCellEdit](https://docs.devexpress.com/AspNet/js-ASPxClientSpreadsheet.ApplyCellEdit?p=netframework) method to force submission of the last entered value.
+
+## Files to Review
 * [Default.aspx](./CS/ASPxSpreadsheetBinding/Default.aspx) (VB: [Default.aspx](./VB/ASPxSpreadsheetBinding/Default.aspx))
-* **[Default.aspx.cs](./CS/ASPxSpreadsheetBinding/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxSpreadsheetBinding/Default.aspx.vb))**
-<!-- default file list end -->
-# ASPxSpreadsheet - How to save and load documents from a database
+* [Default.aspx.cs](./CS/ASPxSpreadsheetBinding/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxSpreadsheetBinding/Default.aspx.vb))
 
+## Documentation
 
-<p><strong>UPDATED:</strong><br><br>This code example demonstrates how to save and restore ASPxSpreadsheet documents from a database using a Binary column.<br>Starting with version <strong>15.1</strong>, we recommend using the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxSpreadsheetASPxSpreadsheet_Opentopic">ASPxSpreadsheet.Open</a> method to load a document and call the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxSpreadsheetASPxSpreadsheet_SaveCopytopic">ASPxSpreadsheet.SaveCopy</a> method to save changes.</p>
-<p>In version <strong>15.2</strong>, it is also possible to handle the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxSpreadsheetASPxSpreadsheet_Savingtopic">ASPxSpreadsheet.Saving</a> event to save a document by clicking the ribbon's built-in Save button.</p>
-<p><br><strong>For Older Versions:</strong><br>Use <a href="https://documentation.devexpress.com/#CoreLibraries/DevExpressSpreadsheetISpreadsheetComponent_LoadDocumenttopic">ISpreadsheetComponent.LoadDocument</a> to load a document and <a href="https://documentation.devexpress.com/#CoreLibraries/DevExpressSpreadsheetISpreadsheetComponent_SaveDocumenttopic">ISpreadsheetComponent.SaveDocument</a> - to save it.<p><strong>NOTE:</strong><br>A cell doesn't get the value an end-user entered until the user clicks Enter or tabs out of this cell. As a result the issue with saving an entered value may occur if the value was not submitted.<p>In v18.1 we introduced the <a href="https://docs.devexpress.com/AspNet/js-ASPxClientSpreadsheet.ApplyCellEdit">ASPxClientSpreadsheet.ApplyCellEdit</a> method to force submission of the last entered value.</p><br><br><strong>See Also:<br>MVC Version:</strong><br><a href="https://www.devexpress.com/Support/Center/p/T190813">T190813: Spreadsheet - How to save and load documents from a database</a></p>
+* [Spreadsheet Document Management](https://docs.devexpress.com/AspNet/116406/components/spreadsheet/document-management)
+* [Querying Data with the SqlDataSource Control](https://learn.microsoft.com/en-us/aspnet/web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs)
 
-<br/>
+## More Examples
 
-
+* [Spreadsheet for ASP.NET MVC - How to save/load documents to/from a database](https://github.com/DevExpress-Examples/asp-net-mvc-spreadsheet-work-with-database)
