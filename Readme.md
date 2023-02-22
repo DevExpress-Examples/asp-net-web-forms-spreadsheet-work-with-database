@@ -13,10 +13,10 @@ This example demonstrates how to configure the [Spreadsheet control](https://doc
 
 During page initialization, load a document from a database as a byte array and pass it to the control's [Open](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxSpreadsheet.ASPxSpreadsheet.Open(System.String-DevExpress.Spreadsheet.DocumentFormat-System.Func-System.Byte---)) method to open the document in the Spreadsheet.
 
-The [Saving](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxSpreadsheet.ASPxSpreadsheet.Saving) event occurs when a user clicks the built-in **Save** or **SaveAs** command on the Spreadsheet's ribbon. To save changes, handle the `Saving` event and update the data source. To save the document after a user clicks an external button, update the database in the button's [Click](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxButton.Click?p=netframework) event handler.
+The [Saving](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxSpreadsheet.ASPxSpreadsheet.Saving) event occurs when a user clicks the built-in **Save** or **SaveAs** command in the Spreadsheet's Ribbon UI. To save changes, handle the `Saving` event and update the data source. To save the document after a user clicks a custom button, update the database in the button's [Click](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxButton.Click?p=netframework) event handler.
 
 > **Note**  
-> When a user modifies a cell, the Spreadsheet control applies the entered value only after the user moves focus to another cell. A cell value cannot be saved until the control applies it. Call the [ApplyCellEdit](https://docs.devexpress.com/AspNet/js-ASPxClientSpreadsheet.ApplyCellEdit?p=netframework) method to force submission of the last entered value.
+> When a user changes a cell value, the Spreadsheet control applies the entered value only after the user moves focus to another cell. A new cell value cannot be saved until the control applies it. To apply the pending cell value change, call the [ApplyCellEdit](https://docs.devexpress.com/AspNet/js-ASPxClientSpreadsheet.ApplyCellEdit?p=netframework) method.
 
 ## Files to Review
 * [Default.aspx](./CS/ASPxSpreadsheetBinding/Default.aspx) (VB: [Default.aspx](./VB/ASPxSpreadsheetBinding/Default.aspx))
