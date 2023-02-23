@@ -1,25 +1,21 @@
-﻿Imports DevExpress.Spreadsheet
+Imports DevExpress.Spreadsheet
 Imports System
-Imports System.Collections
-Imports System.Collections.Generic
 Imports System.Data
-Imports System.Linq
-Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
 
 Namespace ASPxSpreadsheetBinding
-    Partial Public Class [Default]
-        Inherits System.Web.UI.Page
+
+    Public Partial Class [Default]
+        Inherits Page
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
-
         End Sub
 
         Protected Sub Spreadsheet_Init(ByVal sender As Object, ByVal e As EventArgs)
             If Not IsPostBack Then
-                Dim view As DataView = DirectCast(Sqldatasource1.Select(DataSourceSelectArguments.Empty), DataView)
-                Spreadsheet.Document.LoadDocument(CType(view.Table.Rows(0)("DocBytes"), Byte()), DevExpress.Spreadsheet.DocumentFormat.Xlsx)
+                Dim view As DataView = CType(Sqldatasource1.Select(DataSourceSelectArguments.Empty), DataView)
+                Spreadsheet.Document.LoadDocument(CType(view.Table.Rows(0)("DocBytes"), Byte()), DocumentFormat.Xlsx)
             End If
         End Sub
 
