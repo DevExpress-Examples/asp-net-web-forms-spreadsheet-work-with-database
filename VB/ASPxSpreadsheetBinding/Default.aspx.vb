@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Data
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
@@ -6,33 +6,36 @@ Imports DevExpress.Spreadsheet
 Imports DevExpress.Web.Office
 
 Namespace ASPxSpreadsheetBinding
-    Partial Public Class [Default]
-        Inherits System.Web.UI.Page
+
+    Public Partial Class [Default]
+        Inherits Page
 
         Private SessionKey As String = "EditedDocuemntID"
-        Protected Property EditedDocuemntID() As String
+
+        Protected Property EditedDocuemntID As String
             Get
-                Return If(DirectCast(Session(SessionKey), String), String.Empty)
+                Return If(CStr(Session(SessionKey)), String.Empty)
             End Get
+
             Set(ByVal value As String)
                 Session(SessionKey) = value
             End Set
         End Property
+
         Protected Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs)
-            If (Not IsPostBack) AndAlso (Not IsCallback) Then
+            If Not IsPostBack AndAlso Not IsCallback Then
                 If Not String.IsNullOrEmpty(EditedDocuemntID) Then
-                    DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocuemntID).DocumentId)
+                    Call DocumentManager.CloseDocument(DocumentManager.FindDocument(EditedDocuemntID).DocumentId)
                     EditedDocuemntID = String.Empty
                 End If
 
                 EditedDocuemntID = Guid.NewGuid().ToString()
-
-                Dim view As DataView = DirectCast(SqlDataSource1.Select(DataSourceSelectArguments.Empty), DataView)
+                Dim view As DataView = CType(SqlDataSource1.Select(DataSourceSelectArguments.Empty), DataView)
                 Spreadsheet.Open(EditedDocuemntID, DocumentFormat.Xlsx, Function() CType(view.Table.Rows(0)("DocBytes"), Byte()))
             End If
         End Sub
 
-        Protected Sub Spreadsheet_Saving(ByVal source As Object, ByVal e As DevExpress.Web.Office.DocumentSavingEventArgs)
+        Protected Sub Spreadsheet_Saving(ByVal source As Object, ByVal e As DocumentSavingEventArgs)
             ' Save document with the Ribbon Save button
             e.Handled = True
             SqlDataSource1.Update()
